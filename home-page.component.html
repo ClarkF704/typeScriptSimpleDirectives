@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>This is the home page</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- ngModel being implemented here -->
+            <input type="text" class="form-control" id="name" 
+                required
+                [(ngModel)]="data.name" />
+            <p>Hello <span style="color:blueviolet;">{{ data.name }}</span></p>
+        </div>
+        <div class="col-lg-8">
+            <h3>This is ngModel ( <span style="color:aquamarine;">Two way data binding</span> )</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h4>ngFor / ngIf</h4>
+            <!-- ngFor looping through th array of people objects in home-component.ts file -->
+            <!-- ngIf is hiding / removing every age that is below 30 -->
+            <ul *ngFor="let person of people">
+                <li *ngIf="person.age > 30" >
+            <!-- Keep in mind it is ILLIGAL to have two different directives on one tag  -->
+                    {{person.name}} <strong>{{person.age}}</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <h4>ngSwitch</h4>
+            <ul *ngFor="let person of peopleTwo"
+            [ngSwitch]="person.country">
+                <li *ngSwitchCase="'United Kingdom'" class="text-success" >{{person.name}} | {{person.country}}</li>
+                <li *ngSwitchCase="'USA'" class="text-primary" >{{person.name}} | {{person.country}}</li>
+                <li *ngSwitchCase="'Mexico'" class="text-danger" >{{person.name}} | {{person.country}}</li>
+                <li *ngSwitchCase="'China'" class="text-secondary" >{{person.name}} | {{person.country}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
+            <h4>Hover & Click methods</h4>
+            <p id="myID" (mouseenter)="hoverMethod()" (mouseleave)="hoverMethod2()">Hover Me!</p>
+            <h4>Click</h4>
+            <p id="para">You can change my color</p>
+            <button (click)="changeColor('blue');">blue</button>
+            <button (click)="changeColor('red');">red</button>
+        </div>
+    </div>
+</div>
+
